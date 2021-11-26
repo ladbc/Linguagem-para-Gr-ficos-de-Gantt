@@ -1,0 +1,50 @@
+lexer grammar LALexer;
+
+options
+{   
+    language = Java;
+}
+
+INICIOGANT: 'inicioGantt';
+FIMGANTT: 'finalGantt';
+
+DECLARE: 'declare';
+STRING: 'string';
+DATA: 'data';
+TITULO: 'titulo';
+SUBTITULO: 'subtitulo';
+ETIQUETAATIVIDADE: 'etiqueta';
+REGISTRO: 'registro';
+FIMREGISTRO: 'fim-registro';
+REGISTRODEP: 'registrodep';
+FIMREGISTRODEP: 'fim-registrodep';
+INICIOATIVIDADES: 'inicioAtividades';
+FINALATIVIDADES: 'finalAtividades';
+INICIOLEGENDAS: 'inicioLegendas';
+FINALLEGENDAS: 'finalLegendas';
+
+LEVA: '<-';
+VIRGULA: ',';
+ABRECOL: '{';
+FECHACOL: '}';
+DOISPONTOS: ':';
+ABREPARENTESIS: '(';
+FECHAPARENTESIS: ')';
+
+ATIVIDADE: LETRA (LETRA|DIGITO)*;
+DIA: DIGITO DIGITO;
+MES: DIGITO DIGITO;
+ANO: DIGITO DIGITO DIGITO DIGITO;
+DATACOMPLETA: DIA '/' MES '/' ANO;
+
+LETRA: 'a'..'z'|'A'..'Z'|'_';
+DIGITO: '0'..'9';
+
+COMAISLINHA:
+    '\\' ~('}'|'\n'|'\r'|'\t')* {if(true) {throw new RuntimeException("Linha "+ getLine() +": comentario nao fechado");}};
+CADMAISLINHA:
+    '"' ~('"'|'\n'|'\r'|'\t')* {if(true) {throw new RuntimeException("Linha "+ getLine() +": cadeia literal nao fechada");}};
+
+TEXTO: '"' ~('"'|'\n'|'\r'|'\t')* '"';
+COMENTARIO: '\\' ~('{'|'}'|'\n'|'\r'|'\t')* '\\';
+ESPACO: (' '|'\t'|'\r'|'\n');
