@@ -20,6 +20,8 @@ A linguagem de Gantt permite a definição de colunas de predescessores, duraç�
 
 Para executar o projeto, presente na pasta Projeto_Codigo_Fonte,basta utilizar o seguinte comando em uma linha de comando
 > java -jar ~/LALexico-1.0-SNAPSHOT-jar-with-dependencies.jar ./teste.txt ./saidateste.txt
+
+
 sendo o primeiro path a rota do .jar presente na pasta, o segundo o arquivo txt contendo a programa de teste e o último um arquivo no qual se deseja criar receber os resultados da análise.
 
 ## Desenvolvimento futuro
