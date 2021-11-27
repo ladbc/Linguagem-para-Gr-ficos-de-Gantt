@@ -16,15 +16,11 @@ O repositório fornece material a respeito de linguagem de Gantt, uma ferramenta
 A linguagem de Gantt pode ser definida como procedural e de alto nível. Um programa se divide em três etapas, as definições estéticas e restriões de arquivo, declaração das legendas e titulos e por último, descrição das atividades contidas no gráfico.
 A linguagem de Gantt permite a definição de colunas de predescessores, duração e relevãncia das atividades. Também permite a referência a atividades em outras linhas e a escolha de diferentes escalas 
 
-## Exemplo de uso 
+## Modo de Execução
 
-> COLOCAR CODIGO AQUI
- 
-Tomando como base um caso de uso simples o código acima gera o seguinte gráfico:
-
-> COLOCAR FOTO AQUI
-
-## Modo de execução
+Para executar o projeto, presente na pasta Projeto_Codigo_Fonte,basta utilizar o seguinte comando em uma linha de comando
+> java -jar ~/LALexico-1.0-SNAPSHOT-jar-with-dependencies.jar ./teste.txt ./saidateste.txt
+sendo o primeiro path a rota do .jar presente na pasta, o segundo o arquivo txt contendo a programa de teste e o último um arquivo no qual se deseja criar receber os resultados da análise.
 
 ## Desenvolvimento futuro
-Como desenvolimento futuro está o desenvolvimento de um gerador de código e sugestões
+Como projetos futuros estão o desenvolvimento de analisador semântico e um gerador de código, além de sugestões 
