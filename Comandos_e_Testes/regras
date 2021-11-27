@@ -1,0 +1,68 @@
+grammar LAParser;
+
+programa:
+	'inicioGantt' conteudo 'finalGantt';
+conteudo:
+	legenda? atividade+;
+
+titulo:
+	'titulo' ATRIBUICAO TEXTO;
+subtitulo:
+	'subtitulo' ATRIBUICAO TEXTO;
+legenda:
+	'inicioLegenda' (titulo subtitulo | titulo)? 'finalLegenda';
+atividade:
+	'inicioAtividades' comando* 'finalAtividades';
+comando:
+	registro |
+	registrodep |
+        declaracao;
+
+declaracao:
+        'declare' tipo ':' variavel+;
+variavel:
+        '{' CONSTANTE E (TEXTO | datacompleta) '}';
+registro: 
+	'registro' dados (registro | registrodep)* (etiqueta)? 'fim-registro';
+etiqueta:
+	ATRIBUICAO '{' 'etiqueta' E CONSTANTE '}';
+registrodep:
+	'registrodep' dado dependente (registro | registrodep)* 'fim-registrodep';
+
+dados:
+	'{' TEXTO E datacompleta E datacompleta '}';
+dado:
+	'{' TEXTO E datacompleta '}';
+dependente:
+	ATRIBUICAO '{' 'dependente' E CONSTANTE '}';
+
+CONSTANTE: 
+	LETRA (LETRA|DIGITO)*;
+dia: 
+	DIGITO DIGITO;
+mes: 
+	DIGITO DIGITO;
+ano: 
+	DIGITO DIGITO DIGITO DIGITO;
+datacompleta: 
+	dia '/' mes '/' ano;
+
+ATRIBUICAO:
+	'<-';
+E:
+	',';
+tipo:
+	'string'|
+	'data';
+
+LETRA:	
+    ('a'..'z'|'A'..'Z'|'_');
+TEXTO:     
+    '"' ~('\t'|'\r'|'\n'|'"')* '"';
+DIGITO:
+    ('0'..'9');
+
+COMENTARIO:
+    '\\' ~('{'|'}')* '\\' {skip();};
+ESPACOBRANCO:
+    (' '|'\t'|'\r'|'\n') {skip();};
