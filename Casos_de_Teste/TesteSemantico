@@ -1,0 +1,24 @@
+inicioLegenda
+	"Grafico Gantt"
+finalLegenda
+
+inicioGantt
+	topicos
+		var1, va2, var1
+	fim_topicos
+	
+	etiquetas
+		et1, et2, et3
+	fim_etiquetas
+	
+	inicioAtividades
+		declare string : historia1 <- {"isso e a historia 1", 12/02/2022, 12/02/2022}
+		declare string : historia1 <- {"isso nao e a historia 1", 12/02/2022, 12/02/2022}
+		declare string : et2 <- {"isso nao e a historia 1", 12/02/2022, 12/02/2022}
+		
+		registro
+			et1 <- { "texto", 12/02/2022, 12/02/2022 }
+				registrodep <- { dependente et1 } fim-registrodep
+		fim-registro
+	finalAtividades
+finalGantt
